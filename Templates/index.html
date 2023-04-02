@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1E1F1E;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-top: 40px;
+            font-size: 48px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        label,
+        input[type="submit"] {
+            font-size: 24px;
+            padding: 10px;
+            color: #fff;
+        }
+
+        input[type="text"] {
+            width: 400px;
+            margin-right: 10px;
+            font-size: 24px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        .weather {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+            border: 2px solid #fff;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Weather App</h1>
+    <form method="POST">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+        <input type="submit" value="Get Weather">
+    </form>
+    {% if weather %}
+    <div class="weather">
+        <h2>{{ weather.city }}</h2>
+        <p>Temperature: {{ weather.temperature }} K</p>
+        <p>Description: {{ weather.description }}</p>
+        <img src="https://openweathermap.org/img/w/{{ weather.icon }}.png" alt="{{ weather.description }}">
+    </div>
+    {% endif %}
+</body>
+
+</html>
